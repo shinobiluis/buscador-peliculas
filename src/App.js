@@ -5,6 +5,8 @@ import 'bulma/css/bulma.css' //importamos bulma
 import {Title} from './components/title' // importamos el componente
 import { SearchForm } from './components/SearchForm'
 
+import MoviesList from './components/MoviesList'
+
 class App extends Component {
   // Creamos el state para renderizar resultados
   state = {
@@ -14,13 +16,7 @@ class App extends Component {
   _handleResults = (results) => {
     this.setState({results})
   }
-  // Metodo que retorna la actualizacion de resultados
-  _renderResults(){
-    const { results } = this.state
-    return results.map(movie => {
-      return <p key={movie.imdbID}>{movie.Title}</p>
-    })
-  }
+  
   render(){
     return (
       <div className="App">
@@ -33,7 +29,7 @@ class App extends Component {
         {
           this.state.results.length === 0
           ? <p>Sin resultados.</p> 
-          : this._renderResults()
+          : <MoviesList movies={this.state.results}/>
         }
       </div>
     );
