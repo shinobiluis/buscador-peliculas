@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
+import {ButtonBackToHome} from '../components/ButtonBackToHome'
 
 // agregamos el api key de imdb
 const API_KEY = 'f7434544' 
@@ -23,9 +25,7 @@ export class Detail extends Component {
             this.setState({ movie })
         })
     }
-    _goBack(){
-        window.history.back()
-    }
+    
     componentDidMount(){
         console.log(this.props)
         const { id } = this.props.match.params
@@ -35,7 +35,7 @@ export class Detail extends Component {
         const {Title, Poster, Actors, Metascore, Plot} = this.state.movie
         return (
             <div>
-                <button onClick={this._goBack}>Volver</button>
+                <ButtonBackToHome/>
                 <h1>{Title}</h1>
                 <img src={Poster} alt={Title}/>
                 <h3>{Actors}</h3>
