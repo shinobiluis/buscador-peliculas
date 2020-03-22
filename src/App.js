@@ -7,8 +7,7 @@ import {Home} from './pages/Home'
 import {NotFount} from './pages/NotFount'
 import {
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 class App extends Component {

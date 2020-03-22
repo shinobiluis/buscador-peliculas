@@ -16,7 +16,7 @@ export class Home extends Component {
     
     _renderResults(){
         return this.state.results.length === 0
-            ? <p>No hay resultados 😵</p> 
+            ? <p>No hay resultados</p> 
             : <MoviesList movies={this.state.results}/>
     }
 
