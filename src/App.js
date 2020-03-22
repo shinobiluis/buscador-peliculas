@@ -4,6 +4,7 @@ import './App.css';
 import 'bulma/css/bulma.css' //importamos bulma
 import {Title} from './components/title' // importamos el componente
 import { SearchForm } from './components/SearchForm'
+import {Detail} from './pages/Detail'
 
 import MoviesList from './components/MoviesList'
 
@@ -24,6 +25,11 @@ class App extends Component {
         : <MoviesList movies={this.state.results}/>
   }
   render(){
+    const url = new URL(document.location)
+    const hasId = url.searchParams.has('id')
+    if(hasId){
+      return <Detail id={url.searchParams.get('id')}/>
+    }
     return (
       <div className="App">
         <Title>Search movies</Title>

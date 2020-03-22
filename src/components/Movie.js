@@ -4,15 +4,16 @@ import PropTypes from 'prop-types';
 class Movie extends Component {
 
     static propTypes = {
+        id: PropTypes.string,
         title: PropTypes.string,
         year: PropTypes.string,
         poster: PropTypes.string
     }
 
     render() {
-        const { poster, year, title } = this.props
+        const { id, poster, year, title } = this.props
         return (
-            <div className="card">
+            <a href={`?id=${id}`} className="card">
                 <div className="card-image">
                     <figure className="image">
                         <img 
@@ -29,7 +30,7 @@ class Movie extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         );
     }
 }
