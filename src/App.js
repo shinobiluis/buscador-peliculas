@@ -10,13 +10,19 @@ import MoviesList from './components/MoviesList'
 class App extends Component {
   // Creamos el state para renderizar resultados
   state = {
+    usedSearch: false,
     results: []
   }
   // Creamos el metodo que pasamos al componente hijo
   _handleResults = (results) => {
-    this.setState({results})
+    this.setState({ results, usedSearch: true })
   }
   
+  _renderResults(){
+      return this.state.results.length === 0
+        ? <p>No hay resultados 😵</p> 
+        : <MoviesList movies={this.state.results}/>
+  }
   render(){
     return (
       <div className="App">
@@ -27,10 +33,11 @@ class App extends Component {
         </div>
         {/* Si el state results es === 0  */}
         {
-          this.state.results.length === 0
-          ? <p>Sin resultados.</p> 
-          : <MoviesList movies={this.state.results}/>
+          this.state.usedSearch
+          ? this._renderResults()
+          : <small>Use el formulario para buscar peliculas</small>
         }
+        
       </div>
     );
   }
